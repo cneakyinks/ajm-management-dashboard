@@ -1,4 +1,4 @@
-# AJM Management Dashboard
+# myEPG: AMJ2026
 
 Planning dashboard for Arts & Music Fest 2026 — schedule, budget, logistics, publicity, programme, booths and team.
 
