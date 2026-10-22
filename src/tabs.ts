@@ -9,6 +9,7 @@ export type TabId =
   | 'programme'
   | 'booths'
   | 'team'
+  | 'settings'
 
 export const tabs: { id: TabId; label: string; icon: IconName }[] = [
   { id: 'overview', label: 'Overview', icon: 'overview' },
@@ -19,4 +20,5 @@ export const tabs: { id: TabId; label: string; icon: IconName }[] = [
   { id: 'programme', label: 'Programme', icon: 'programme' },
   { id: 'booths', label: 'Booths', icon: 'booths' },
   { id: 'team', label: 'Team & tasks', icon: 'team' },
+  { id: 'settings', label: 'Settings', icon: 'settings' },
 ]

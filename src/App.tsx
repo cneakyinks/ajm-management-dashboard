@@ -1,7 +1,7 @@
-import { useState, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { PlanProvider, formatEventDate, usePlan } from './store'
 import { tabs, type TabId } from './tabs'
-import { Icon } from './ui'
+import { BrandMark, Icon } from './ui'
 import { PinDialog, isAdminUnlocked } from './admin'
 import { Overview } from './pages/Overview'
 import { TimelinePage } from './pages/TimelinePage'
@@ -11,12 +11,30 @@ import { PublicityPage } from './pages/PublicityPage'
 import { ProgrammePage } from './pages/ProgrammePage'
 import { BoothsPage } from './pages/BoothsPage'
 import { TeamPage } from './pages/TeamPage'
+import { SettingsPage } from './pages/SettingsPage'
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState<TabId>('overview')
   const [confirmReset, setConfirmReset] = useState(false)
   const [askPin, setAskPin] = useState(false)
   const { plan, editing, setEditing, reset } = usePlan()
+
+  const requestEdit = () => {
+    setConfirmReset(false)
+    if (isAdminUnlocked()) setEditing(true)
+    else setAskPin(true)
+  }
+
+  useEffect(() => {
+    document.title = plan.event.appTitle || plan.event.name
+  }, [plan.event.appTitle, plan.event.name])
+
+  useEffect(() => {
+    const link = document.querySelector<HTMLLinkElement>('link[rel~="icon"]')
+    if (!link) return
+    link.dataset.original ??= link.href
+    link.href = plan.event.logo || link.dataset.original
+  }, [plan.event.logo])
 
   const pages: Record<TabId, ReactNode> = {
     overview: <Overview setTab={setActiveTab} />,
@@ -27,13 +45,14 @@ function Dashboard() {
     programme: <ProgrammePage />,
     booths: <BoothsPage />,
     team: <TeamPage />,
+    settings: <SettingsPage requestEdit={requestEdit} />,
   }
 
   return (
     <div className={`app-shell ${editing ? 'is-editing' : ''}`}>
       <aside className="sidebar">
         <div className="brand">
-          <div className="brand-mark">{plan.event.initials}</div>
+          <BrandMark initials={plan.event.initials} logo={plan.event.logo} />
           <div><strong>{plan.event.name}</strong><span>{plan.event.short}</span></div>
         </div>
         <nav aria-label="Dashboard modules">
@@ -54,7 +73,7 @@ function Dashboard() {
 
       <div className="main-shell">
         <header className="topbar">
-          <div className="mobile-brand"><span className="brand-mark">{plan.event.initials}</span><strong>{plan.event.short}</strong></div>
+          <div className="mobile-brand"><BrandMark initials={plan.event.initials} logo={plan.event.logo} /><strong>{plan.event.short}</strong></div>
           <div className="topbar-event"><span>{plan.event.name}</span><strong>Planning dashboard</strong></div>
           <div className="topbar-actions">
             {editing && (
@@ -68,12 +87,7 @@ function Dashboard() {
                 <button className="btn btn-ghost" onClick={() => setConfirmReset(true)}><Icon name="undo" size={15} />Reset plan</button>
               )
             )}
-            <button className={`btn ${editing ? 'btn-solid' : 'btn-ghost'}`} onClick={() => {
-              setConfirmReset(false)
-              if (editing) setEditing(false)
-              else if (isAdminUnlocked()) setEditing(true)
-              else setAskPin(true)
-            }}>
+            <button className={`btn ${editing ? 'btn-solid' : 'btn-ghost'}`} onClick={() => { if (editing) { setEditing(false); setConfirmReset(false) } else requestEdit() }}>
               <Icon name={editing ? 'eye' : 'edit'} size={15} />{editing ? 'Done editing' : 'Edit plan'}
             </button>
           </div>

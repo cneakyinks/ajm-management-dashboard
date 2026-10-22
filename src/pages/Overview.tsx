@@ -1,4 +1,4 @@
-import { EditOnly, Text } from '../fields'
+import { Text } from '../fields'
 import { daysUntil, formatEventDate, money, signedMoney, useCommitteeProgress, usePlan, useTotals } from '../store'
 import { Card, CardHeading, Icon, Metric } from '../ui'
 import type { TabId } from '../tabs'
@@ -27,20 +27,6 @@ export function Overview({ setTab }: { setTab: (tab: TabId) => void }) {
         </div>
         <div className="hero-mark" aria-hidden="true"><Icon name="spark" size={34} /></div>
       </section>
-
-      <EditOnly>
-        <Card className="event-editor">
-          <CardHeading eyebrow="Event details" title="This event" action={<span className="inferred-note">Used across every page</span>} />
-          <div className="event-fields">
-            <label>Name<input className="field" value={plan.event.name} onChange={(event) => setEvent('name', event.target.value)} /></label>
-            <label>Short name<input className="field" value={plan.event.short} onChange={(event) => setEvent('short', event.target.value)} /></label>
-            <label>Initials<input className="field" value={plan.event.initials} onChange={(event) => setEvent('initials', event.target.value.slice(0, 3))} /></label>
-            <label>Date<input className="field" type="date" value={plan.event.date} onChange={(event) => setEvent('date', event.target.value)} /></label>
-            <label>Start<input className="field" value={plan.event.start} onChange={(event) => setEvent('start', event.target.value)} /></label>
-            <label>End<input className="field" value={plan.event.end} onChange={(event) => setEvent('end', event.target.value)} /></label>
-          </div>
-        </Card>
-      </EditOnly>
 
       <div className="metrics-grid">
         <Metric

@@ -8,6 +8,8 @@ import type { Plan } from './types'
 export function seedPlan(): Plan {
   return {
     event: {
+      appTitle: 'myEPG: AMJ2026',
+      logo: '',
       name: 'Arts & Music Fest 2026',
       short: 'Fest 2026',
       initials: 'AM',

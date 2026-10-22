@@ -413,3 +413,15 @@ button.highlight-dot:not(:disabled):hover { border-color: var(--color-live); }
 .pin-error { color: var(--color-orange); font-size: .75rem; font-weight: 600; }
 .pin-actions { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .4rem; }
 .pin-actions .btn:disabled { opacity: .5; cursor: not-allowed; }
+
+.brand-logo { object-fit: cover; background: var(--color-surface); }
+.settings-fieldset { min-width: 0; margin: 0; border: 0; padding: 0; }
+.settings-fieldset:disabled .field { background: var(--color-table); color: var(--color-muted); cursor: not-allowed; }
+.settings-fieldset:disabled .settings-brand-actions .btn { opacity: .5; cursor: not-allowed; pointer-events: none; }
+.settings-locked { margin: 0 0 1rem; align-items: center; }
+.settings-locked > div:nth-child(2) { flex: 1; }
+.settings-brand { display: flex; align-items: center; gap: 1rem; margin-top: 1.15rem; }
+.settings-brand .brand-mark { width: 3.5rem; height: 3.5rem; border-radius: 1rem; font-size: 1rem; }
+.settings-brand-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.settings-brand-actions .inferred-note { flex-basis: 100%; }
+.event-field-wide { grid-column: 1 / -1; }

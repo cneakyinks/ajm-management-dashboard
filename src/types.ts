@@ -31,6 +31,10 @@ export type Booth = { id: string; title: string; detail: string; ownerId: string
 export type ScheduleItem = { id: string; time: string; title: string; detail: string; highlight: boolean }
 
 export type EventMeta = {
+  /** Dashboard name — shown in the browser tab. */
+  appTitle: string
+  /** Small square logo as a data URL; empty falls back to the initials. */
+  logo: string
   name: string
   short: string
   initials: string

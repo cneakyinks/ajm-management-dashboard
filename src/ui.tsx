@@ -26,6 +26,8 @@ export type IconName =
   | 'eye'
   | 'eyeOff'
   | 'lock'
+  | 'settings'
+  | 'upload'
   | 'grip'
 
 export function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
@@ -54,6 +56,8 @@ export function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
     eye: <><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="2.6"/></>,
     eyeOff: <><path d="M10.6 6.1A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a17 17 0 0 1-2.6 3.3M6.6 7.6C3.8 9.3 2 12 2 12s3.5 6 10 6a9.7 9.7 0 0 0 4.4-1M9.9 9.9a2.6 2.6 0 0 0 3.7 3.7"/><path d="m3 3 18 18"/></>,
     lock: <><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14.5v2"/></>,
+    settings: <><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></>,
+    upload: <><path d="M12 15V4M7 9l5-5 5 5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></>,
     grip: <><circle cx="9" cy="6" r="1.3" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1.3" fill="currentColor" stroke="none"/></>,
   }
 
@@ -104,4 +108,11 @@ export function CardHeading({ eyebrow, title, action }: { eyebrow: string; title
       {action}
     </div>
   )
+}
+
+/** The event's square mark: the uploaded logo, or its initials when there is none. */
+export function BrandMark({ initials, logo }: { initials: string; logo: string }) {
+  return logo
+    ? <img className="brand-mark brand-logo" src={logo} alt="" />
+    : <span className="brand-mark">{initials}</span>
 }
