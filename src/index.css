@@ -400,3 +400,16 @@ button.highlight-dot:not(:disabled):hover { border-color: var(--color-live); }
   .schedule-table { table-layout: auto; }
   .col-time { width: auto; }
 }
+
+.pin-backdrop { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: rgb(23 33 28 / .45); padding: 1rem; }
+.pin-dialog { display: flex; width: 100%; max-width: 21rem; flex-direction: column; gap: .6rem; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); padding: 1.5rem; box-shadow: 0 20px 50px rgb(23 33 28 / .18); }
+.pin-dialog h2 { margin: .3rem 0 0; font-family: var(--font-display); font-size: 1.1rem; }
+.pin-dialog p { margin: 0; color: var(--color-muted); font-size: .8rem; }
+.pin-input { position: relative; margin-top: .4rem; }
+.pin-input .field { padding: .6rem 2.6rem .6rem .75rem; font-size: 1rem; letter-spacing: .2em; }
+.pin-toggle { position: absolute; top: 50%; right: .35rem; display: grid; width: 2rem; height: 2rem; place-items: center; border: 0; border-radius: .45rem; background: transparent; color: var(--color-muted); cursor: pointer; transform: translateY(-50%); }
+.pin-toggle:hover { background: var(--color-canvas); color: var(--color-ink); }
+.pin-toggle:focus-visible { outline: 2px solid var(--color-lime-focus); }
+.pin-error { color: var(--color-orange); font-size: .75rem; font-weight: 600; }
+.pin-actions { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .4rem; }
+.pin-actions .btn:disabled { opacity: .5; cursor: not-allowed; }

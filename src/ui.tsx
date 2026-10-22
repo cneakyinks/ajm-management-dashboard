@@ -24,6 +24,8 @@ export type IconName =
   | 'up'
   | 'down'
   | 'eye'
+  | 'eyeOff'
+  | 'lock'
   | 'grip'
 
 export function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
@@ -50,6 +52,8 @@ export function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
     up: <path d="m6 15 6-6 6 6"/>,
     down: <path d="m6 9 6 6 6-6"/>,
     eye: <><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="2.6"/></>,
+    eyeOff: <><path d="M10.6 6.1A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a17 17 0 0 1-2.6 3.3M6.6 7.6C3.8 9.3 2 12 2 12s3.5 6 10 6a9.7 9.7 0 0 0 4.4-1M9.9 9.9a2.6 2.6 0 0 0 3.7 3.7"/><path d="m3 3 18 18"/></>,
+    lock: <><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14.5v2"/></>,
     grip: <><circle cx="9" cy="6" r="1.3" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1.3" fill="currentColor" stroke="none"/></>,
   }
 
