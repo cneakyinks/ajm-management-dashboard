@@ -1,0 +1,10 @@
+{
+  "description": "Streamline planning and tracking for Arts and Music Fest 2026 with modules for schedules, budgets, logistics, publicity, programs, booths, and team milestones.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
