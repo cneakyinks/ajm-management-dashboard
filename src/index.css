@@ -374,6 +374,8 @@ footer { display: flex; justify-content: space-between; border-top: 1px solid va
 
 /* ---------- Programme schedule (running order) ---------- */
 .schedule-card .card-heading-row { align-items: center; }
+.schedule-heading-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: .6rem; }
+.schedule-export { display: flex; gap: .4rem; }
 .schedule-lead { display: flex; align-items: center; gap: .35rem; color: var(--color-muted); font-size: .72rem; font-weight: 600; }
 .field-inline { width: 7rem; }
 .schedule-hint { margin: 0 0 .9rem; color: var(--color-faint); font-size: .68rem; }

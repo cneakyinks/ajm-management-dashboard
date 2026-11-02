@@ -1,6 +1,7 @@
 import { AddButton, DragHandle, EditOnly, Para, RowActions, StatusField, Text, useDragReorder } from '../fields'
 import { formatShortEventDate, uid, usePlan } from '../store'
 import { Card, CardHeading, Icon, PageTitle } from '../ui'
+import { exportScheduleCsv, printSchedule } from '../exportSchedule'
 
 export function ProgrammePage() {
   const { plan, editing, addRow, updateRow, setEvent } = usePlan()
@@ -68,16 +69,26 @@ export function ProgrammePage() {
           eyebrow={`${plan.event.scheduleStatus || 'Tentative'}: ${formatShortEventDate(plan.event.date)}`}
           title="Programme Schedule"
           action={
-            <span className="schedule-lead">
-              Lead:{' '}
-              <Text
-                value={plan.event.scheduleLead}
-                onChange={(value) => setEvent('scheduleLead', value)}
-                placeholder="Add lead"
-                ariaLabel="Schedule lead"
-                className="field-inline"
-              />
-            </span>
+            <div className="schedule-heading-actions">
+              <span className="schedule-lead">
+                Lead:{' '}
+                <Text
+                  value={plan.event.scheduleLead}
+                  onChange={(value) => setEvent('scheduleLead', value)}
+                  placeholder="Add lead"
+                  ariaLabel="Schedule lead"
+                  className="field-inline"
+                />
+              </span>
+              <div className="schedule-export">
+                <button className="btn" onClick={() => exportScheduleCsv(plan.event, plan.schedule)} title="Download as a spreadsheet (CSV)">
+                  <Icon name="download" size={14} />CSV
+                </button>
+                <button className="btn" onClick={() => printSchedule(plan.event, plan.schedule)} title="Print, or choose “Save as PDF”">
+                  <Icon name="download" size={14} />PDF / Print
+                </button>
+              </div>
+            </div>
           }
         />
         <EditOnly>
